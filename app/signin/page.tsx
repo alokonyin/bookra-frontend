@@ -32,6 +32,9 @@ export default function Signin() {
       // 🧠 Store auth (in both localStorage and cookies)
       saveAuth(token, user);
 
+      // Give browser a moment to set the cookie before redirecting
+      await new Promise(resolve => setTimeout(resolve, 100));
+
       // 🧭 Route based on role
       if (user.role === "operator") {
         r.push("/operator");
