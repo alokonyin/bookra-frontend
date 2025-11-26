@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CheckCircle, AlertCircle, Lock, Phone, KeyRound } from "lucide-react";
 
-export default function OperatorSetupPage() {
+function OperatorSetupContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -234,5 +234,13 @@ export default function OperatorSetupPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function OperatorSetupPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen"><p className="text-gray-500">Loading...</p></div>}>
+      <OperatorSetupContent />
+    </Suspense>
   );
 }
