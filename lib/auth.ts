@@ -16,8 +16,12 @@ export function saveAuth(token: string, user: User) {
   localStorage.setItem("bookra_user", JSON.stringify(user));
   // also mirror in cookies for middleware
   const isSecure = window.location.protocol === 'https:';
+
+  // For HTTPS, use SameSite=Strict (more reliable than None)
+  // For HTTP (localhost), use SameSite=Lax
   const secureFlag = isSecure ? '; Secure' : '';
-  const sameSiteFlag = isSecure ? '; SameSite=None' : '; SameSite=Lax';
+  const sameSiteFlag = isSecure ? '; SameSite=Strict' : '; SameSite=Lax';
+
   document.cookie = `bookra_token=${token}; path=/; max-age=${60 * 60 * 24}${secureFlag}${sameSiteFlag}`;
 }
 export function clearAuth() {
