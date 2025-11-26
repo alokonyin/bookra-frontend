@@ -1,26 +1,51 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #ffffff;
+    --ink: #171717;
+    --muted: #737373;
+    --ring: #e5e5e5;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-gray-50 via-white to-blue-50 text-neutral-900;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-max {
+    @apply max-w-[1200px] mx-auto px-6;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-neutral-200 shadow-sm;
+  }
+
+  .input {
+    @apply w-full px-4 py-3.5 border border-neutral-300 rounded-xl text-base
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base
+           font-semibold text-white bg-primary-600 hover:bg-primary-700
+           transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .badge {
+    @apply w-10 h-10 rounded-xl bg-primary-600 text-white flex items-center
+           justify-center font-bold text-sm;
+  }
 }
