@@ -307,16 +307,27 @@ export default function PaymentPage() {
               </div>
 
               <div className="border-t border-pink-400 pt-3">
+                <div className="flex justify-between mb-2">
+                  <span>Subtotal</span>
+                  <span>${booking.total_amount.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-pink-100">
+                  <span>Service Fee (5%)</span>
+                  <span>${(booking.service_fee || booking.total_amount * 0.05).toFixed(2)}</span>
+                </div>
+              </div>
+
+              <div className="border-t border-pink-400 pt-3">
                 <div className="flex justify-between text-base font-bold">
                   <span>Total price</span>
-                  <span>${booking.total_amount.toFixed(2)}</span>
+                  <span>${(booking.total_due || booking.total_amount * 1.05).toFixed(2)}</span>
                 </div>
               </div>
 
               <div className="bg-pink-700 rounded-lg p-3 mt-4">
                 <div className="flex justify-between items-center">
                   <span className="font-bold">Total Amount Due</span>
-                  <span className="text-xl font-bold">${booking.total_amount.toFixed(2)}</span>
+                  <span className="text-xl font-bold">${(booking.total_due || booking.total_amount * 1.05).toFixed(2)}</span>
                 </div>
               </div>
             </div>
