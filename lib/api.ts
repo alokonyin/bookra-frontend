@@ -15,3 +15,21 @@ export async function apiCall(endpoint: string, options?: RequestInit) {
 
   return response;
 }
+
+// Login function
+export async function login(credentials: { identifier: string; password: string }) {
+  const response = await fetch(`${API_URL}/v1/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(credentials),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.detail || 'Login failed');
+  }
+
+  return response.json();
+}
