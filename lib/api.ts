@@ -18,7 +18,7 @@ export async function apiCall(endpoint: string, options?: RequestInit) {
 
 // Login function
 export async function login(credentials: { identifier: string; password: string }) {
-  const response = await fetch(`${API_URL}/v1/auth/login`, {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
