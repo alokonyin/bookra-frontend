@@ -41,7 +41,7 @@ export default function OperatorPasswordSetupPage() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/auth/operator/complete-setup", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/auth/operator/complete-setup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -39,8 +39,8 @@ export default function TravelerConfirm() {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [tripRes, bookedRes] = await Promise.all([
-          fetch(`http://127.0.0.1:8000/v1/trips/${tripId}`, { headers }),
-          fetch(`http://127.0.0.1:8000/v1/traveler/trips/${tripId}/booked-seats`, { headers }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/trips/${tripId}`, { headers }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/traveler/trips/${tripId}/booked-seats`, { headers }),
         ]);
 
         if (!tripRes.ok) throw new Error("Trip not found");
@@ -102,7 +102,7 @@ export default function TravelerConfirm() {
         contact_country: country,
       };
 
-      const res = await fetch("http://127.0.0.1:8000/v1/bookings/create", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/bookings/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

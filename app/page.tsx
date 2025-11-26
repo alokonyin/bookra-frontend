@@ -42,7 +42,7 @@ export default function Home() {
     const passengers = mode === "bus" ? busPassengers : flightPassengers;
 
     try {
-      const url = new URL("http://127.0.0.1:8000/v1/traveler/search");
+      const url = new URL(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/traveler/search`);
       url.search = new URLSearchParams({
         from_city: from,
         to_city: to,

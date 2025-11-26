@@ -24,7 +24,7 @@ export default function EditVerifiedOperator() {
         const token =
           localStorage.getItem("bookra_token") ||
           localStorage.getItem("token");
-        const res = await fetch(`http://127.0.0.1:8000/v1/admin/operators`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Failed to load operators");
@@ -54,7 +54,7 @@ export default function EditVerifiedOperator() {
         localStorage.getItem("bookra_token") || localStorage.getItem("token");
 
       const res = await fetch(
-        `http://127.0.0.1:8000/v1/admin/operators/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators/${id}`,
         {
           method: "PATCH",
           headers: {

@@ -53,7 +53,7 @@ export default function OfficesPage() {
   const fetchOffices = async () => {
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/offices/", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -68,7 +68,7 @@ export default function OfficesPage() {
   const fetchInvites = async () => {
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/offices/invites/list", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/invites/list`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -82,7 +82,7 @@ export default function OfficesPage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/offices/", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function OfficesPage() {
 
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/offices/invites", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/invites`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -157,7 +157,7 @@ export default function OfficesPage() {
 
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch(`http://127.0.0.1:8000/v1/offices/${officeId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/${officeId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

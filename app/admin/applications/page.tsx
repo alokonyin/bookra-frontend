@@ -60,7 +60,7 @@ export default function OperatorApplicationsPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token") || localStorage.getItem("bookra_token");
-      const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
 
       const res = await fetch(`${API_BASE}/v1/admin/operator-applications`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -100,7 +100,7 @@ export default function OperatorApplicationsPage() {
     try {
       setActionLoading(true);
       const token = localStorage.getItem("token") || localStorage.getItem("bookra_token");
-      const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
 
       const res = await fetch(
         `${API_BASE}/v1/admin/operator-applications/approve`,
@@ -144,7 +144,7 @@ export default function OperatorApplicationsPage() {
     try {
       setActionLoading(true);
       const token = localStorage.getItem("token") || localStorage.getItem("bookra_token");
-      const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
 
       const res = await fetch(
         `${API_BASE}/v1/admin/operator-applications/reject`,

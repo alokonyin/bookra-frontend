@@ -22,7 +22,7 @@ export default function EditTripPage() {
   useEffect(() => {
     async function fetchTrip() {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/v1/operator/trips/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("bookra_token")}`,
           },
@@ -53,7 +53,7 @@ export default function EditTripPage() {
     e.preventDefault();
     setMsg(null);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/v1/operator/trips/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

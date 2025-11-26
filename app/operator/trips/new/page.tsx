@@ -34,7 +34,7 @@ export default function AddTripPage() {
     async function fetchOffices() {
       try {
         const token = localStorage.getItem("bookra_token") || localStorage.getItem("token");
-        const res = await fetch("http://127.0.0.1:8000/v1/offices/", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.ok) {
@@ -85,7 +85,7 @@ export default function AddTripPage() {
         office_id: Number(form.office_id), // ✅ Added office_id
       };
 
-      const res = await fetch("http://127.0.0.1:8000/v1/operator/trips", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

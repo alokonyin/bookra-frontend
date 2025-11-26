@@ -20,7 +20,7 @@ export default function AdminOperatorsPage() {
   async function fetchOperators() {
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/admin/operators", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -46,7 +46,7 @@ export default function AdminOperatorsPage() {
     setMessage("");
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/admin/operators", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export default function AdminOperatorsPage() {
     if (!confirm("Are you sure you want to delete this operator?")) return;
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch(`http://127.0.0.1:8000/v1/admin/operators/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

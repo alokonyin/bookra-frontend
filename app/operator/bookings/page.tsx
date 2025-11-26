@@ -34,7 +34,7 @@ export default function OperatorBookings() {
     const token = localStorage.getItem("bookra_token");
     const headers = { Authorization: `Bearer ${token}` };
 
-    const res = await fetch("http://127.0.0.1:8000/v1/operator/bookings", { headers });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/bookings`, { headers });
     const data: Booking[] = await res.json();
 
     // Group by office first, then by unique trip (including time)

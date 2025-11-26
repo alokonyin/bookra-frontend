@@ -73,7 +73,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     (async () => {
       try {
-        const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
         const [m, p, b] = await Promise.all([
           authFetch(`${API_BASE}/v1/admin/metrics`),
           authFetch(`${API_BASE}/v1/admin/recent-payments`),

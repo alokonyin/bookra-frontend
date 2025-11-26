@@ -16,7 +16,7 @@ export default function EditOperatorPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("bookra_token");
-    fetch(`http://127.0.0.1:8000/v1/admin/operators`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators`, {
       headers: { Authorization: `Bearer ${token}` },
       credentials: "include",
     })
@@ -33,7 +33,7 @@ export default function EditOperatorPage() {
       ? form.company_domain.split("@")[1]
       : form.company_domain; // 🧹 clean up accidental email entry
 
-    const res = await fetch(`http://127.0.0.1:8000/v1/admin/operators/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export default function EditOperatorPage() {
   const handleDelete = async () => {
     if (!confirm("Delete this operator?")) return;
     const token = localStorage.getItem("bookra_token");
-    await fetch(`http://127.0.0.1:8000/v1/admin/operators/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/operators/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
       credentials: "include",

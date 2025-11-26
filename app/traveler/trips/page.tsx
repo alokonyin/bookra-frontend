@@ -30,7 +30,7 @@ export default function MyTripsPage() {
         const token =
           localStorage.getItem("bookra_token") || localStorage.getItem("token");
 
-        const res = await fetch("http://127.0.0.1:8000/v1/traveler/bookings/me", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/traveler/bookings/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

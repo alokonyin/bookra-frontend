@@ -1,5 +1,5 @@
 // frontend/api/operator.js
-const API_URL = "http://127.0.0.1:8000/v1/operator";
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator`;
 
 // Prefer the app-wide key, fall back to legacy
 function getToken() {

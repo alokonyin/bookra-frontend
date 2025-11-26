@@ -29,7 +29,7 @@ export default function PaymentPage() {
   const fetchBookingDetails = async () => {
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch(`http://127.0.0.1:8000/v1/bookings/${bookingId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/bookings/${bookingId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -58,7 +58,7 @@ export default function PaymentPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch("http://127.0.0.1:8000/v1/payments/process", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/payments/process`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

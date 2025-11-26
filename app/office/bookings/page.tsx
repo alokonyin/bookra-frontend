@@ -47,7 +47,7 @@ export default function OfficeBookingsPage() {
         return;
       }
 
-      const res = await fetch("http://127.0.0.1:8000/v1/operator/bookings", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/bookings`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

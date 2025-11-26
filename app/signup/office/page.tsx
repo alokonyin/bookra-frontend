@@ -43,7 +43,7 @@ function OfficeSignupForm() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/v1/offices/invites/accept", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/invites/accept`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

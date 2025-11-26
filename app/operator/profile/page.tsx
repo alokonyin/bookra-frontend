@@ -24,7 +24,7 @@ export default function OperatorProfile() {
 
     (async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/v1/operator/me", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Failed to load profile");
@@ -49,7 +49,7 @@ export default function OperatorProfile() {
       localStorage.getItem("bookra_token") || localStorage.getItem("token");
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/v1/operator/profile", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/profile`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

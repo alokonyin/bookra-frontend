@@ -1,5 +1,5 @@
 // frontend/api/bookings.js
-const API_URL = "http://127.0.0.1:8000/v1/traveler/bookings";
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/traveler/bookings`;
 
 function getToken() {
   return localStorage.getItem("safar_token") || localStorage.getItem("token");

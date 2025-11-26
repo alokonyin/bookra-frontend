@@ -31,7 +31,7 @@ export default function OperatorTripsPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://127.0.0.1:8000/v1/operator/trips", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("bookra_token")}`,
           },
@@ -54,7 +54,7 @@ export default function OperatorTripsPage() {
   async function handleDelete(id: number) {
     if (!confirm("Are you sure you want to delete this trip?")) return;
     try {
-      const res = await fetch(`http://127.0.0.1:8000/v1/operator/trips/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("bookra_token")}`,

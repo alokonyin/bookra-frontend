@@ -54,7 +54,7 @@ export default function OfficeDashboardPage() {
         return;
       }
 
-      const res = await fetch("http://127.0.0.1:8000/v1/offices/dashboard", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/offices/dashboard`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

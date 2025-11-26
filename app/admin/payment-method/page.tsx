@@ -14,7 +14,7 @@ export default function AdminPayment() {
 //   useEffect(() => {
 //   const fetchPayment = async () => {
 //     const token = localStorage.getItem("bookra_token");
-//     const res = await fetch("http://127.0.0.1:8000/v1/admin/payment-method", {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/payment-method`, {
 //       headers: { Authorization: `Bearer ${token}` },
 //     });
 //     if (res.ok) {
@@ -28,7 +28,7 @@ export default function AdminPayment() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const token = localStorage.getItem("bookra_token");
-    const res = await fetch("http://127.0.0.1:8000/v1/admin/payment-method", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/admin/payment-method`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

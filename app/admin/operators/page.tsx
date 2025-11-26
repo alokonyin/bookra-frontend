@@ -38,7 +38,7 @@ export default function AdminOperatorsPage() {
       setLoading(true);
       const token = getToken();
       setAuthed(!!token);
-      const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
 
       const res = await fetch(`${API_BASE}/v1/admin/operators`, {
         headers: {
@@ -81,7 +81,7 @@ export default function AdminOperatorsPage() {
       return;
     }
 
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
     const res = await fetch(`${API_BASE}/v1/admin/operators`, {
       method: "POST",
       headers: {
@@ -120,7 +120,7 @@ export default function AdminOperatorsPage() {
       return;
     }
 
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL || "${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}";
     const res = await fetch(`${API_BASE}/v1/admin/operators/${id}`, {
       method: "DELETE",
       headers: {

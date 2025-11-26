@@ -40,7 +40,7 @@ export default function OfficeTripsPage() {
         return;
       }
 
-      const res = await fetch("http://127.0.0.1:8000/v1/operator/trips", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -65,7 +65,7 @@ export default function OfficeTripsPage() {
 
     try {
       const token = localStorage.getItem("bookra_token");
-      const res = await fetch(`http://127.0.0.1:8000/v1/operator/trips/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/operator/trips/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

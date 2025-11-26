@@ -1,5 +1,5 @@
 // frontend/api/trips.js
-const API_URL = "http://127.0.0.1:8000/v1/traveler";
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/v1/traveler`;
 
 export async function searchTrips(params) {
   const token = localStorage.getItem("safar_token") || localStorage.getItem("token");
