@@ -43,3 +43,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 - TypeScript
 - Tailwind CSS
 - Lucide React Icons
+
+## Production URLs
+
+- Frontend: https://bookra-frontend.vercel.app
+- Backend: (Deploy to Replit and update here)
