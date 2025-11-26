@@ -62,7 +62,7 @@ export default function AdminDashboard() {
       ...(init.headers || {}),
       Authorization: `Bearer ${token}`,
     };
-    const res = await fetch(url, { ...init, headers, credentials: "include" });
+    const res = await fetch(url, { ...init, headers });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
       throw new Error(err.detail || `Request failed: ${res.status}`);
