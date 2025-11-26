@@ -109,7 +109,6 @@ export default function TravelerConfirm() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(payload),
-        credentials: "include",
       });
 
       if (!res.ok) {
