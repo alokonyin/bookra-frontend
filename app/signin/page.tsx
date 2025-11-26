@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/lib/api";
+import { saveAuth } from "@/lib/auth";
 
 export default function Signin() {
   const r = useRouter();
@@ -28,28 +29,20 @@ export default function Signin() {
       const user = data.user;
       const token = data.access_token;
 
-      // 🧠 Store user object
-      localStorage.setItem("bookra_user", JSON.stringify(user));
+      // 🧠 Store auth (in both localStorage and cookies)
+      saveAuth(token, user);
 
-      // 🧭 Store credentials & route based on role
+      // 🧭 Route based on role
       if (user.role === "operator") {
-        localStorage.setItem("bookra_token", token);
-        localStorage.setItem("operator_role", "operator");
         r.push("/operator");
       }
       else if (user.role === "traveler") {
-        localStorage.setItem("token", token);
-        localStorage.setItem("traveler_role", "traveler");
         r.push("/traveler");
       }
       else if (user.role === "admin") {
-        localStorage.setItem("bookra_token", token);
-        localStorage.setItem("admin_role", "admin");
         r.push("/admin");
       }
       else if (user.role === "office") {
-        localStorage.setItem("bookra_token", token);
-        localStorage.setItem("office_role", "office");
         r.push("/office/dashboard");
       }
       else {
