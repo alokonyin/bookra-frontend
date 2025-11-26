@@ -1,7 +1,26 @@
 "use client";
 
+import { useState } from "react";
+
 export default function DebugPage() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+  const [testResult, setTestResult] = useState<string>("");
+  const [testing, setTesting] = useState(false);
+
+  const testConnection = async () => {
+    setTesting(true);
+    setTestResult("Testing connection...");
+
+    try {
+      const response = await fetch(`${apiUrl}/health`);
+      const data = await response.json();
+      setTestResult(`✅ Success! Response: ${JSON.stringify(data)}`);
+    } catch (error: any) {
+      setTestResult(`❌ Failed: ${error.message}`);
+    } finally {
+      setTesting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
@@ -34,6 +53,21 @@ export default function DebugPage() {
                 2
               )}
             </pre>
+          </div>
+
+          <div>
+            <button
+              onClick={testConnection}
+              disabled={testing}
+              className="btn-primary w-full"
+            >
+              {testing ? "Testing..." : "Test API Connection"}
+            </button>
+            {testResult && (
+              <p className="mt-2 p-3 bg-neutral-100 rounded text-sm">
+                {testResult}
+              </p>
+            )}
           </div>
         </div>
       </div>
