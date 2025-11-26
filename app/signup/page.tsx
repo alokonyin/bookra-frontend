@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function SignupPage() {
+function SignupContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialRole = searchParams.get("role") || "traveler";
@@ -20,6 +20,14 @@ export default function SignupPage() {
     <div className="flex justify-center items-center min-h-screen">
       <p className="text-gray-500">Redirecting...</p>
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen"><p className="text-gray-500">Loading...</p></div>}>
+      <SignupContent />
+    </Suspense>
   );
 }
 
